@@ -2,50 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-      
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
 <h:head>
+ 
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz1z_KBhHf6bwNHFYPf1zZs2JNInnMNnA" />
+
 </h:head>
 <h:body>
-	<h1>Wendel Lopes</h1>
+	
+	<h1>Displaying circles in Google Maps</h1>
+	<h2>By Wendel Lopes</h2>
 
 	<h:form>
-	
-	 
-	
-	   <p:editor value="#{editor.value}" />
+		<p:growl id="growl" life="3000" />
+
+		<p:gmap id="gmap" center="45.4993173,-73.5629035" zoom="13" type="ROADMAP"
+			style="width:100%;height:400px" model="#{circlesView.mapModel}">
+			<p:ajax event="overlaySelect"
+				listener="#{circlesView.onCircleSelect}" update="growl" />
+		</p:gmap>
 	</h:form>
-	
-	<h:form id="form">           
-    <p:growl id="msgs" showDetail="true" />
-    
-    
-    <p:inputTextarea rows="10" cols="50" completeMethod="#{inputTextareaView.completeArea}" queryDelay="750" minQueryLength="4" />
- 
-    <h3 style="margin-top:0">Basic</h3>
-    <p:accordionPanel>
-        <p:tab title="Godfather Part I">
-            <h:panelGrid columns="2" cellpadding="10">
-                <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
-                <h:outputText
-                    value="The story begins as Don Vito Corleone..." />
-            </h:panelGrid>
-        </p:tab>
-        <p:tab title="Godfather Part II">
-            <h:panelGrid columns="2" cellpadding="10">
-                <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
-                <h:outputText value="Francis Ford Coppola's legendary..." />
-            </h:panelGrid>
-        </p:tab>
-        <p:tab title="Godfather Part III">
-            <h:panelGrid columns="2" cellpadding="10">
-                <p:graphicImage name="demo/images/godfather/godfather3.jpg" />
-                <h:outputText value="After a break of more than 15 years..." />
-            </h:panelGrid>
-        </p:tab>
-    </p:accordionPanel>
-    </h:form>
 
 </h:body>
 </html>
