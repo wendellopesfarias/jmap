@@ -6,23 +6,93 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
- 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz1z_KBhHf6bwNHFYPf1zZs2JNInnMNnA" />
+
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz1z_KBhHf6bwNHFYPf1zZs2JNInnMNnA" />
 
 </h:head>
 <h:body>
-	
-	<h1>Displaying circles in Google Maps</h1>
+
+	<h1>Displaying K2 Geospatial in Google Maps</h1>
 	<h2>By Wendel Lopes</h2>
 
 	<h:form>
 		<p:growl id="growl" life="3000" />
 
-		<p:gmap id="gmap" center="45.4993173,-73.5629035" zoom="13" type="ROADMAP"
-			style="width:100%;height:400px" model="#{circlesView.mapModel}">
-			<p:ajax event="overlaySelect"
-				listener="#{circlesView.onCircleSelect}" update="growl" />
-		</p:gmap>
+		<p:dashboard id="board" model="#{shapeView.mapDashboardModel}">
+
+			<p:panel id="canada" header="Canada">
+				<p:gmap id="gmap" center="45.4993173,-73.5629035" zoom="15"
+					type="ROADMAP" style="width:550px;height:400px"
+					model="#{shapeView.mapModel}">
+
+					<p:ajax event="overlaySelect"
+						listener="#{shapeView.onCircleSelect}" update="growl" />
+
+					<p:gmapInfoWindow id="infoWindow">
+						<p:outputPanel
+							style="text-align: center; display: block; margin: auto">
+
+							<h:graphicImage value="resources/#{shapeView.marker.data}"
+								height="120" />
+							<br />
+							<h:outputText value="#{shapeView.marker.title}" />
+
+						</p:outputPanel>
+					</p:gmapInfoWindow>
+				</p:gmap>
+			</p:panel>
+			<p:panel id="usa" header="USA">
+				<p:gmap id="gmap2" center="42.3548507,-71.1012245" zoom="15"
+					type="ROADMAP" style="width:550px;height:400px"
+					model="#{shapeView.mapModel}">
+
+					<p:ajax event="overlaySelect"
+						listener="#{shapeView.onCircleSelect}" update="growl" />
+
+					<p:gmapInfoWindow id="infoWindow2">
+						<p:outputPanel
+							style="text-align: center; display: block; margin: auto">
+
+							<h:graphicImage value="resources/#{shapeView.marker.data}"
+								height="120" />
+							<br />
+							<h:outputText value="#{shapeView.marker.title}" />
+
+						</p:outputPanel>
+					</p:gmapInfoWindow>
+				</p:gmap>
+			</p:panel>
+			<p:panel id="chile" header="Chile">
+				<p:gmap id="gmap3" center="-33.4137836,-70.5853812" zoom="15"
+					type="ROADMAP" style="width:550px;height:400px"
+					model="#{shapeView.mapModel}">
+
+					<p:ajax event="overlaySelect"
+						listener="#{shapeView.onCircleSelect}" update="growl" />
+
+					<p:gmapInfoWindow id="infoWindow3">
+						<p:outputPanel
+							style="text-align: center; display: block; margin: auto">
+
+							<h:graphicImage value="resources/#{shapeView.marker.data}"
+								height="120" />
+							<br />
+							<h:outputText value="#{shapeView.marker.title}" />
+
+						</p:outputPanel>
+					</p:gmapInfoWindow>
+				</p:gmap>
+			</p:panel>
+
+		</p:dashboard>
+
+		<!-- Preload for demo -->
+		<p:outputPanel style="display:none">
+			<h:graphicImage value="resources/k2-logo.png" />
+			<h:graphicImage value="resources/k2-logo-pin.png" />
+		</p:outputPanel>
+
 	</h:form>
 
 </h:body>
