@@ -93,13 +93,13 @@ public class ShapeView implements Serializable {
        // mapModel.addOverlay(marker);
        Marker k2Canada = new Marker(coord1, "Canada 740 Notre-Dame Street W.Suite 1260 Montreal QC H3C 3X6 +1 866-967-1211", 
     		   "k2-logo.png", 
-       		   "http://localhost:8080/jmap/resources/k2-logo-pin.png");       
+       		   "http://jquine.com/jmap/resources/k2-logo-pin.png");       
        Marker k2USA = new Marker(coord2, "USA One Boston Place, Suite 2600 Boston, MA 02108 +1 617-933-7265", 
     		   "k2-logo.png", 
-       		   "http://localhost:8080/jmap/resources/k2-logo-pin.png");
+       		   "http://jquine.com/jmap/resources/k2-logo-pin.png");
        Marker k2Chile = new Marker(coord3, "Chile Avenida Apoquindo 4501, Piso 12 Las Condes, Santiago +56 2 2595-2802", 
     		   "k2-logo.png", 
-       		   "http://localhost:8080/jmap/resources/k2-logo-pin.png");
+       		   "http://jquine.com/jmap/resources/k2-logo-pin.png");
        
        
        mapModel.addOverlay(k2Canada);
